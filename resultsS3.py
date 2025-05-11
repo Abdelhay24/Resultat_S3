@@ -1,7 +1,7 @@
 import xlrd
 import json
 
-file_path = "/home/abdelhay/Downloads/PV_S3.xls"
+file_path = "PV_S3.xls"
 matricule_to_find = "23068"
 
 workbook = xlrd.open_workbook(file_path)
