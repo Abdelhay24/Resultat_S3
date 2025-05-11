@@ -1,17 +1,20 @@
 import xlrd
 import json
-matricule = input("matriculak chenhou ?")
+matricule = input("matriculak chenhou ?   ")
 DSI_file ="PV_S3_DSI.xls"
 RSS_file = "PV_S3_RSS.xls"
 CNM_file="PV_S3_DWM.xls"
-speciality = input("ta5assoussak chenhou? : ['CNM','DSI','RSS'] !? ")
+S1_file = "PV_S1.xls"
+option = input("choose an option and type it ? : ['CNM_S3','DSI_S3','RSS_S3','S1']   :    ")
 matricule_to_find = matricule
-if (speciality=="CNM"):
+if (option=="CNM_S3"):
     file_path = CNM_file
-elif(speciality=="DSI"):
+elif(option=="DSI_S3"):
     file_path =DSI_file
-elif(speciality=="RSS"):
+elif(option=="RSS_S3"):
     file_path = RSS_file
+elif(option=="S1") :
+    file_path = S1_file
 else:
     print("ta5assouss mahou 5aleg")
     exit()
@@ -49,6 +52,7 @@ for row_idx in range(6, sheet.nrows):
 
     if stud_id == matricule_to_find:
         result_found = True
+        stud_name = row[2] + " "+ row[3]
         raw = row[4:]  # Skip first 4 columns (meta info)
 
         matieres_dict = {}
@@ -60,7 +64,9 @@ for row_idx in range(6, sheet.nrows):
         modules_dict[mod_name] = {'matieres': [], 'moyenne': None, 'decision': None}
 
         for _ in range(13):
-                if m_idx == 13:
+                if (option == "S1") and (m_idx==11) :
+                    break
+                elif m_idx == 13:
                     break
                 name = headers[m_idx]
                 d = parse_float(raw[i])
@@ -107,7 +113,8 @@ for row_idx in range(6, sheet.nrows):
         non_validees = [matiere for matiere, data in matieres_dict.items() if data['decision'] == 'NC']
 
         # Afficher les résultats
-        print(f"Résultats pour matricule {matricule_to_find}:\n")
+        print(f"\n")
+        print(f"Résultats pour {stud_name} de matricule {matricule_to_find}:\n")
         print("Matières:")
         print(json.dumps(matieres_dict, indent=4, ensure_ascii=False))
         print("\nModules:")
