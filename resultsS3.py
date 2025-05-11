@@ -4,7 +4,7 @@ matricule = input("matriculak chenhou ?")
 DSI_file ="PV_S3_DSI.xls"
 RSS_file = "PV_S3_RSS.xls"
 CNM_file="PV_S3_DWM.xls"
-speciality = input("ta5assoussak chenhou?")
+speciality = input("ta5assoussak chenhou? : ['CNM','DSI','RSS'] !? ")
 matricule_to_find = matricule
 if (speciality=="CNM"):
     file_path = CNM_file
@@ -14,7 +14,7 @@ elif(speciality=="RSS"):
     file_path = RSS_file
 else:
     print("ta5assouss mahou 5aleg")
-    file_path = DSI_file
+    exit()
 workbook = xlrd.open_workbook(file_path)
 sheet = workbook.sheet_by_index(0)
 
