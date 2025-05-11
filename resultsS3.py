@@ -2,7 +2,7 @@ import xlrd
 import json
 
 file_path = "PV_S3.xls"
-matricule_to_find = "23068"
+matricule_to_find = "23001"
 
 workbook = xlrd.open_workbook(file_path)
 sheet = workbook.sheet_by_index(0)
@@ -51,7 +51,6 @@ for row_idx in range(6, sheet.nrows):
         for _ in range(13):
                 if m_idx == 13:
                     break
-                print(m_idx)
                 name = headers[m_idx]
                 d = parse_float(raw[i])
                 sn = parse_float(raw[i + 1])
