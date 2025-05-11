@@ -102,14 +102,26 @@ for row_idx in range(6, sheet.nrows):
             'decision': raw[i + 2]
         }
         modules_dict['Semestre'] = semestre
+        # Extract non validated matieres
+        # Extraire seulement les noms des matières non validées
+        non_validees = [matiere for matiere, data in matieres_dict.items() if data['decision'] == 'NC']
 
-        # Print results
+        # Afficher les résultats
         print(f"Résultats pour matricule {matricule_to_find}:\n")
         print("Matières:")
         print(json.dumps(matieres_dict, indent=4, ensure_ascii=False))
         print("\nModules:")
         print(json.dumps(modules_dict, indent=4, ensure_ascii=False))
-        break
+        print("\nLes matières non validées:")
+        print(json.dumps(non_validees, indent=4, ensure_ascii=False))
+
+        # # Print results
+        # print(f"Résultats pour matricule {matricule_to_find}:\n")
+        # print("Matières:")
+        # print(json.dumps(matieres_dict, indent=4, ensure_ascii=False))
+        # print("\nModules:")
+        # print(json.dumps(modules_dict, indent=4, ensure_ascii=False))
+        # break
 
 if not result_found:
     print(f"⚠️ Matricule {matricule_to_find} non trouvé.")
