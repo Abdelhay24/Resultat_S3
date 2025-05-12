@@ -40,21 +40,6 @@ def parse_float(value):
         return None
 
 # Define exam requirements for each subject
-exam_requirements = {
-    'Algorithmique et Programmation': {'devoir': 5, 'exam_sn': 5, 'exam_sr': 5},
-    'Architecture des Ordinateurs': {'devoir': 5, 'exam_sn': 5, 'exam_sr': 5},
-    'Systèmes d\'Exploitation': {'devoir': 5, 'exam_sn': 5, 'exam_sr': 5},
-    'Réseaux Informatiques': {'devoir': 5, 'exam_sn': 5, 'exam_sr': 5},
-    'Bases de Données': {'devoir': 5, 'exam_sn': 5, 'exam_sr': 5},
-    'Programmation Web': {'devoir': 5, 'exam_sn': 5, 'exam_sr': 5},
-    'Programmation Orientée Objet': {'devoir': 5, 'exam_sn': 5, 'exam_sr': 5},
-    'Mathématiques': {'devoir': 5, 'exam_sn': 5, 'exam_sr': 5},
-    'Anglais': {'devoir': 5, 'exam_sn': 5, 'exam_sr': 5},
-    'Communication': {'devoir': 5, 'exam_sn': 5, 'exam_sr': 5},
-    'Économie et Gestion': {'devoir': 5, 'exam_sn': 5, 'exam_sr': 5},
-    'Droit et Éthique': {'devoir': 5, 'exam_sn': 5, 'exam_sr': 5},
-    'Projet': {'devoir': 5, 'exam_sn': 5, 'exam_sr': 5}
-}
 
 result_found = False
 
@@ -105,7 +90,7 @@ for row_idx in range(6, sheet.nrows):
                     'exam_sr': sr,
                     'moyenne': m,
                     'decision': dec,
-                    'points_needed': points_needed,
+                    'Les points que tu dois ajouter lors du rattrapage pour avoir une moyenne de 10': points_needed,
                     'status': 'Validé' if m and m >= 10 else 'Non Validé'
                 }
                 modules_dict[mod_name]['matieres'].append(name)
